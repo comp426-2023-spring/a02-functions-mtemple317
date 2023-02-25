@@ -31,7 +31,7 @@ const latitude = args.n || -Math.abs(args.s) || null
 const longitude = args.e || -Math.abs(args.w) || null 
 if (!args.d) { args.d=1 }
 
-const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35.92' + latitude + '&longitude=-79.05' + longitude + '&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York')
+const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35.92' + latitude + '&longitude=-79.05' + longitude + '&current_weather=true' + current_weather + '&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York')
 //const response = await fetch ('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&hourly=temperature_2m');
 //console.log(response)
 

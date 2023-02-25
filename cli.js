@@ -19,11 +19,8 @@ console.log(`Usage: galosh.js [options] -[n|s] LATITUDE -[e|w] LONGITUDE -z TIME
 import moment from 'moment-timezone'
 
 //const timezone = moment.tz.guess();
-//was getting undefined error for 'guess' with the above so I used suggestion from here below https://github.com/moment/moment-timezone/issues/294
-
-
 //Make a request
-//built in so probably don't need?
+//built in, don't need?
 import fetch from 'node-fetch';
 
 const system_tz = moment.tz.guess()
@@ -34,7 +31,7 @@ const latitude = args.n || -Math.abs(args.s) || null
 const longitude = args.e || -Math.abs(args.w) || null 
 if (!args.d) { args.d=1 }
 
-const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35.92' + latitude + '&longitude=-79.05&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York')
+const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=35.92' + latitude + '&longitude=-79.05' + longitude + '&current_weather=true&temperature_unit=fahrenheit&windspeed_unit=mph&precipitation_unit=inch&timezone=America%2FNew_York')
 //const response = await fetch ('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&hourly=temperature_2m');
 //console.log(response)
 
@@ -52,4 +49,11 @@ if (days == 0) {
   console.log("in " + days + " days.")
 } else {
   console.log("tomorrow.")
-}
+} 
+/* Do you need to wear your galoshes?
+if (( "$PRECIP_HOURS" > "0" )); then
+  printf "You might need your galoshes ${DAY_PHRASE}.\n"
+else
+  printf "You probably won't need your galoshes ${DAY_PHRASE}.\n"
+fi */
+
